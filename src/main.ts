@@ -1,6 +1,6 @@
 // Data types
 let myName:string = 'yaswanth'
-let year: number = 19;
+// let year: number = 19;
 let isLoading : boolean = true;
 let album : any = 1999; // any type
 let album1 : string | number | boolean // union type
@@ -177,3 +177,37 @@ const numberOrString = (value : string | number ): string =>{
     if(typeof value === 'number') return 'number'
     return createError('This should never happen')
 }
+
+// chapter - 5 Assertions
+type One = string
+type Two = string | number
+type Three = 'hello'
+
+//convert to more or less specific
+let a: One = 'hello'
+let b = a as Two // less
+let c = a as Three // more
+
+let d=<One> 'world'
+let e=<string | number> 'world'
+
+const addOrConcat = (a: number, b: number, c:'add' | 'concat'): number | string =>{
+    if(c === 'add') return a+b
+    return ''+a+b
+}
+
+let myVal: string = addOrConcat(2,2,'concat') as string
+
+// Be careful! TS see no problem - but a string is returned
+let nextVal: number = addOrConcat(2,2,'concat') as number
+
+(10 as unknown) as string
+
+//The dom
+const img = document.querySelector('img')!
+img.src
+
+const myImg = document.getElementById('#img') as HTMLImageElement
+myImg.src
+
+const nextImg = <HTMLImageElement>document.getElementById('#img')

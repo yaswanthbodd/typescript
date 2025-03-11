@@ -1,7 +1,7 @@
 "use strict";
 // Data types
 let myName = 'yaswanth';
-let year = 19;
+// let year: number = 19;
 let isLoading = true;
 let album = 1999; // any type
 let album1; // union type
@@ -122,3 +122,24 @@ const numberOrString = (value) => {
         return 'number';
     return createError('This should never happen');
 };
+//convert to more or less specific
+let a = 'hello';
+let b = a; // less
+let c = a; // more
+let d = 'world';
+let e = 'world';
+const addOrConcat = (a, b, c) => {
+    if (c === 'add')
+        return a + b;
+    return '' + a + b;
+};
+let myVal = addOrConcat(2, 2, 'concat');
+// Be careful! TS see no problem - but a string is returned
+let nextVal = addOrConcat(2, 2, 'concat');
+10;
+//The dom
+const img = document.querySelector('img');
+img.src;
+const myImg = document.getElementById('#img');
+myImg.src;
+const nextImg = document.getElementById('#img');
